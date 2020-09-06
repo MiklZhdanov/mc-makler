@@ -43,9 +43,10 @@ const filterApplicants = (
 const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = ({
   className,
 }) => {
-  const { applicants, loading } = useSelector((state: AppState) => ({
+  const { applicants, loading, error } = useSelector((state: AppState) => ({
     applicants: state.applicants.items,
     loading: state.applicants.loading,
+    error: state.applicants.error,
   }));
   const [filter, setFilter] = useState({});
   const history = useHistory();
@@ -67,6 +68,7 @@ const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = (
           applicants={filterApplicants(applicants, filter)}
         />
       )}
+      {error}
     </div>
   );
 };

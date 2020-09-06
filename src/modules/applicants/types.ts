@@ -15,6 +15,7 @@ export type ApplicantType = {
 export type ApplicantsStateType = {
   items: ApplicantType[];
   loading: boolean;
+  error?: string;
 };
 
 export type ApplicantFilterType = {
