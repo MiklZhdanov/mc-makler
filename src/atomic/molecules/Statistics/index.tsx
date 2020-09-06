@@ -16,7 +16,7 @@ const StatisticsComponent: React.FunctionComponent<IStatisticsProps> = ({
   const statisticItems = useMemo(
     () =>
       data.map((item) => (
-        <div key={item.label} className="sttistic-item">
+        <div key={item.label} className="statistic-item">
           <div className="sttistic-item__value">{item.value}</div>
           <div className="sttistic-item__label">{item.label}</div>
         </div>
@@ -31,7 +31,7 @@ export const Statistics = styled(StatisticsComponent)`
   display: flex;
   justify-content: flex-end;
 
-  .sttistic-item {
+  .statistic-item {
     height: 44px;
     min-width: 110px;
     text-align: center;
@@ -39,6 +39,7 @@ export const Statistics = styled(StatisticsComponent)`
     padding: 0 10px;
     &:last-child {
       border-right: none;
+      min-width: 98px;
     }
 
     &__value {

@@ -32,7 +32,6 @@ const ApplicantsListGroupsComponent: React.FunctionComponent<IApplicantsListGrou
     () => getApplicantsGroupsByStatus(applicants),
     [applicants]
   );
-
   return (
     <div className={className}>
       {Object.keys(applicantsGroups).map((key: any) => (

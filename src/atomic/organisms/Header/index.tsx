@@ -47,7 +47,6 @@ export const Header = styled(HeaderComponent)`
   top: 0px; 
   z-index: 100;*/
   color: ${(props) => props.theme.colors.baseText};
-  
 
   display: flex;
   align-items: center;
@@ -57,17 +56,18 @@ export const Header = styled(HeaderComponent)`
 
   ${media.tablet`
     height: 80px;
-    padding: 28px 0px;
+    padding: 28px 14px 28px 0px;
   `}
 
   .header {
     &-item {
-      margin-left: 38px;
+      margin-left: 0px;
       display: none;
       cursor: pointer;
       color: ${(props) => props.theme.colors.baseText};
 
       ${media.tablet`
+        margin-left: 32px;
         display: flex;
         align-items: center;
       `}
@@ -84,13 +84,15 @@ export const Header = styled(HeaderComponent)`
     &-logo {
       flex-grow: 1;
       text-align: center;
-      height: 15px;
+      height: 26px;
+      padding-left: 10px;
       svg {
-        height: 15px;
+        height: 16px;
         width: auto;
       }
 
       ${media.tablet`
+        padding-left: 0px;
         text-align: left;
         height: auto;
         svg{

@@ -75,14 +75,14 @@ export const ApplicantsHeader = styled(ApplicantsHeaderComponent)`
       margin-bottom: 24px;
 
       ${media.tablet`
-        margin-bottom: 32px;
+        margin-bottom: 20px;
       `}
     }
     &__statistics {
       display: none;
 
       ${media.tablet`
-        margin-bottom: 32px;
+        margin-bottom: 20px;
         display: block;
       `}
     }

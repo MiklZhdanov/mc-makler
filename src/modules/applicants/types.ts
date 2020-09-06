@@ -13,11 +13,17 @@ export type ApplicantType = {
 };
 
 export type ApplicantsStateType = {
-    items: ApplicantType[];
-    loading: boolean;
-} 
+  items: ApplicantType[];
+  loading: boolean;
+};
 
-const moduleName = '@@applicants';
+export type ApplicantFilterType = {
+  search?: string;
+  bid?: boolean;
+  status?: "set" | "viewed" | "interested" | "accepted";
+};
+
+const moduleName = "@@applicants";
 
 export const ApplicantsActionTypes = {
   GET_APPLICANTS_REQUEST: `${moduleName}/GET_APPLICANTS_REQUEST`,

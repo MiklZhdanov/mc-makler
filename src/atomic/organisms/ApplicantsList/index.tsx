@@ -47,7 +47,9 @@ export const ApplicantsList = styled(ApplicantsListComponent)`
   .applicants-list-wrapper {
     height: 242px;
     overflow: hidden;
+    margin-right: -16px;
     ${media.tablet`
+      margin-right: 0px;
       height: inherit;
       overflow: inherit;
     `}

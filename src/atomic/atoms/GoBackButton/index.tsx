@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { media } from "config/mixins";
 
 import { styled } from "config/theme";
 import { ReactComponent as BackIcon } from "icons/back.svg";
@@ -29,8 +30,13 @@ export const GoBackButton = styled(GoBackButtonComponent)`
   align-items: center;
   color: ${(props) => props.theme.colors.baseText};
   font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 24px;
+
+  ${media.tablet`
+    font-size: 24px;
+    line-height: 32px;
+ `}
   span {
     margin-left: 16px;
   }

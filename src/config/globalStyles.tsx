@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
-import 'typeface-roboto';
-import theme from './theme';
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
+import "typeface-roboto";
+import theme from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-overflow-scrolling: touch;
     min-height: 100vh;
     position: relative;
-    padding-bottom: 200px;
+    padding-bottom: 70px;
     background-color: ${theme.colors.alabaster};
   }
   a, .link {

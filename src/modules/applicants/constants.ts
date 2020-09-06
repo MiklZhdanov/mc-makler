@@ -1,10 +1,10 @@
 import { ApplicantType } from "./types";
 
-export const applicantStatuses = {
+export const applicantStatuses: { [key: string]: string } = {
   set: "Appointment set",
   viewed: "Property viewed",
   interested: "Interested",
-  accepted: "“Offer Accepted",
+  accepted: "Offer Accepted",
 };
 
 //for storybook representation

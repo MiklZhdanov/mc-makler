@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { GoBackButton, IGoBackButtonProps } from "./";
 
 export default {
-  title: "molecules/GoBackButton",
+  title: "atoms/GoBackButton",
   component: GoBackButton,
 } as Meta;
 
