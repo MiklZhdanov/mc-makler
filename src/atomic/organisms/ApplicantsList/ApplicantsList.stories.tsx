@@ -15,4 +15,5 @@ const Template: Story<IApplicantsListProps> = (args) => (
 export const ApplicantsListDefault = Template.bind({});
 ApplicantsListDefault.args = {
   applicants: [applicant],
+  title: "set",
 };

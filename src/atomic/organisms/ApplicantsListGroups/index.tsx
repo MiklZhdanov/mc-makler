@@ -36,7 +36,11 @@ const ApplicantsListGroupsComponent: React.FunctionComponent<IApplicantsListGrou
   return (
     <div className={className}>
       {Object.keys(applicantsGroups).map((key: any) => (
-        <ApplicantsList title={key} applicants={applicantsGroups[key]} />
+        <ApplicantsList
+          key={key}
+          title={key}
+          applicants={applicantsGroups[key]}
+        />
       ))}
     </div>
   );

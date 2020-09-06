@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { styled } from "config/theme";
 import { AppState } from "store";
 import { ApplicantsListGroups } from "atomic/organisms/ApplicantsListGroups";
+import { ApplicantsHeader } from "atomic/organisms/ApplicantsHeader";
 
 interface IApplicantsPageProps {
   className?: string;
@@ -17,6 +18,7 @@ const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = (
   }));
   return (
     <div className={className}>
+      <ApplicantsHeader applicants={applicants} />
       <ApplicantsListGroups applicants={applicants} />
     </div>
   );
