@@ -8,6 +8,7 @@ import { media } from "config/mixins";
 export interface IApplicantsHeaderProps {
   className?: string;
   applicants: ApplicantType[];
+  loading?: boolean;
 }
 
 const getStatistics = (applicants: ApplicantType[]) => {
@@ -48,6 +49,7 @@ const getStatistics = (applicants: ApplicantType[]) => {
 const ApplicantsHeaderComponent: React.FunctionComponent<IApplicantsHeaderProps> = ({
   className,
   applicants,
+  loading,
 }) => {
   const data = useMemo(() => getStatistics(applicants), [applicants]);
   return (
@@ -56,7 +58,7 @@ const ApplicantsHeaderComponent: React.FunctionComponent<IApplicantsHeaderProps>
         <GoBackButton text="Applicants" link="/applicants" />
       </div>
       <div className="applicants-header__statistics">
-        <Statistics data={data} />
+        <Statistics data={data} loading={loading} />
       </div>
     </div>
   );

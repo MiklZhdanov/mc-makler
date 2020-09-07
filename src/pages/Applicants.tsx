@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -7,38 +7,12 @@ import { AppState } from "store";
 import { ApplicantsListGroups } from "atomic/organisms/ApplicantsListGroups";
 import { ApplicantsHeader } from "atomic/organisms/ApplicantsHeader";
 import { ApplicantsFilter } from "atomic/organisms/ApplicantsFilter";
-import { ApplicantType, ApplicantFilterType } from "modules/applicants/types";
 import { query } from "modules/api/utils";
+import { filterApplicants } from "modules/applicants/utils";
 
 interface IApplicantsPageProps {
   className?: string;
 }
-
-const filterApplicants = (
-  applicants: ApplicantType[],
-  filter: ApplicantFilterType
-): ApplicantType[] => {
-  let result: ApplicantType[] = applicants.filter((applicant) => {
-    if (
-      `${applicant.first_name} ${applicant.last_name} ${applicant.email}`
-        .toLowerCase()
-        .includes(filter?.search?.toLowerCase()?.trim() || "")
-    ) {
-      return true;
-    }
-    return false;
-  });
-
-  if (filter?.bid !== undefined) {
-    result = result.filter((applicant) => !!filter.bid === !!applicant.bid);
-  }
-
-  if (filter?.status) {
-    result = result.filter((applicant) => filter.status === applicant.status);
-  }
-
-  return result;
-};
 
 const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = ({
   className,
@@ -51,9 +25,13 @@ const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = (
   const [filter, setFilter] = useState({});
   const history = useHistory();
   const { search } = useLocation();
+  const filteredApplicants = useMemo(
+    () => filterApplicants(applicants, filter),
+    [applicants, filter]
+  );
   return (
     <div className={className}>
-      <ApplicantsHeader applicants={filterApplicants(applicants, filter)} />
+      <ApplicantsHeader applicants={filteredApplicants} loading={loading} />
       <ApplicantsFilter
         defaultFilter={query.parse(search, true)}
         onChange={(data) => {
@@ -64,9 +42,7 @@ const ApplicantsPageComponent: React.FunctionComponent<IApplicantsPageProps> = (
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <ApplicantsListGroups
-          applicants={filterApplicants(applicants, filter)}
-        />
+        <ApplicantsListGroups applicants={filteredApplicants} />
       )}
       {error}
     </div>

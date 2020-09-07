@@ -7,21 +7,25 @@ export interface IStatisticsProps {
     label: string;
     value: string;
   }[];
+  loading?: boolean;
 }
 
 const StatisticsComponent: React.FunctionComponent<IStatisticsProps> = ({
   className,
   data,
+  loading,
 }) => {
   const statisticItems = useMemo(
     () =>
       data.map((item) => (
         <div key={item.label} className="statistic-item">
-          <div className="sttistic-item__value">{item.value}</div>
+          <div className="sttistic-item__value">
+            {!loading ? item.value : "-"}
+          </div>
           <div className="sttistic-item__label">{item.label}</div>
         </div>
       )),
-    [data]
+    [data, loading]
   );
 
   return <div className={className}>{statisticItems}</div>;
