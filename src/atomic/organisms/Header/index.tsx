@@ -96,7 +96,7 @@ export const Header = styled(HeaderComponent)`
         text-align: left;
         height: auto;
         svg{
-          height: auto;
+          height: 23px;
           width: auto;
         }
       `}
@@ -110,8 +110,8 @@ export const Header = styled(HeaderComponent)`
       ${media.tablet`
         margin-right: 36px;
         svg{
-          height: auto;
-          width: auto;
+          height: 32px;
+          width: 32px;
         }`}
     }
 

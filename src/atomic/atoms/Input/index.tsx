@@ -2,25 +2,6 @@ import React, { ReactNode } from "react";
 import { styled } from "config/theme";
 import { media } from "config/mixins";
 
-export const inputStyles = `
-display: block;
-border: 1px solid #E6E6E6;
-border-radius: 4px;
-outline: none;
-height: 45px;
-width: 100%;
-font-weight: normal;
-font-size: 16px;
-line-height: 19px;
-color: #4A4A4A;
-&::placeholder {
-  color: #9D9D9D;
-}
-`;
-
-export const InputStyled = styled.input`
-  ${inputStyles}
-`;
 export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   componentRef?: any;
   icon?: ReactNode;
@@ -61,7 +42,7 @@ const InputComponent = ({
   return (
     <div className={className}>
       {icon && <div className="input-icon">{icon}</div>}
-      <InputStyled ref={componentRef} {...commonProps} />
+      <input ref={componentRef} {...commonProps} />
     </div>
   );
 };
@@ -76,7 +57,22 @@ export const Input = styled(InputComponent)`
   `}
 
   input {
-    padding: 13px 42px;
+    padding: ${(props) => (props.icon ? "13px 42px" : "13px")};
+    display: block;
+    border: 1px solid ${(props) => props.theme.colors.mercury};
+    border-radius: 4px;
+    outline: none;
+    height: 45px;
+    width: 100%;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: ${(props) => props.theme.colors.baseText};
+    box-shadow: none;
+
+    &::placeholder {
+      color: ${(props) => props.theme.colors.silverChalice};
+    }
   }
 
   .input-icon {
