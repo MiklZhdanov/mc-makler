@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
 import dayjs from "dayjs";
 import randomcolor from "randomcolor";
-import { styled } from "config/theme";
+import theme, { styled } from "config/theme";
 import { ApplicantType } from "modules/applicants/types";
+import { Status } from "atomic/atoms/Status";
 
 export interface IApplicantCardProps {
   className?: string;
@@ -43,12 +44,19 @@ const ApplicantCardComponent: React.FunctionComponent<IApplicantCardProps> = ({
         {applicant.email}
       </a>
       <div className="applicant-card__status">
-        {`${applicant.status} ${dayjs(applicant.activity_at).format(
-          "DD MMMM HH:mm"
-        )}`}
+        <Status
+          text={`${applicant.status} ${dayjs(applicant.activity_at).format(
+            "DD MMMM HH:mm"
+          )}`}
+        />
       </div>
       {applicant.bid && (
-        <div className="applicant-card__bid">{`BID ${applicant.bid}€`}</div>
+        <div className="applicant-card__bid">
+          <Status
+            text={`BID ${applicant.bid}€`}
+            bgColor={theme.colors.selectiveYellow}
+          />
+        </div>
       )}
     </div>
   );
@@ -93,30 +101,6 @@ export const ApplicantCard = styled(ApplicantCardComponent)`
       font-size: 16px;
       line-height: 24px;
       color: ${(props) => props.theme.colors.baseText};
-    }
-    &__status {
-      margin: 8px auto 0;
-      width: fit-content;
-      background: ${(props) => props.theme.colors.silverChalice};
-      color: ${(props) => props.theme.colors.white};
-      border-radius: 3px;
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 10px;
-      text-transform: uppercase;
-      padding: 4px 8px;
-    }
-    &__bid {
-      margin: 8px auto 0;
-      width: fit-content;
-      background: ${(props) => props.theme.colors.selectiveYellow};
-      color: ${(props) => props.theme.colors.white};
-      border-radius: 3px;
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 10px;
-      text-transform: uppercase;
-      padding: 4px 8px;
     }
   }
 `;

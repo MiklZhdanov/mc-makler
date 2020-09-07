@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
-import { fork } from 'redux-saga/effects';
-import persistState from 'redux-localstorage';
-import { createBrowserHistory } from 'history';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { routerMiddleware } from 'connected-react-router';
-import { createRootReducer } from './reducers';
-import { createLogger } from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
-import baseSaga from './baseSaga';
+import { createStore, applyMiddleware } from "redux";
+import { fork } from "redux-saga/effects";
+import persistState from "redux-localstorage";
+import { createBrowserHistory } from "history";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { routerMiddleware } from "connected-react-router";
+import { createRootReducer } from "./reducers";
+import { createLogger } from "redux-logger";
+import createSagaMiddleware from "redux-saga";
+import baseSaga from "./baseSaga";
 
 export const history = createBrowserHistory();
 
@@ -19,7 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares: any = [sagaMiddleware, routerMiddleware(history)];
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   middlewares.push(createLogger());
 }
 
@@ -30,7 +30,7 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(...middlewares),
     // @ts-ignore
-    persistState(['applicants'])
+    persistState(["applicants"])
   )
 );
 

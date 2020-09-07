@@ -69,6 +69,8 @@ export const Input = styled(InputComponent)`
     line-height: 19px;
     color: ${(props) => props.theme.colors.baseText};
     box-shadow: none;
+    -webkit-appearance: none;
+    background: ${(props) => props.theme.colors.white};
 
     &::placeholder {
       color: ${(props) => props.theme.colors.silverChalice};
